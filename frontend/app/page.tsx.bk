@@ -1,0 +1,77 @@
+"use client";
+
+import React, { ReactElement, cloneElement } from 'react';
+import { Thread, ThreadConfig, ThreadWelcome, Composer } from "@assistant-ui/react";
+import { PriceSnapshotTool } from "@/components/tools/price-snapshot/PriceSnapshotTool";
+import { PurchaseStockTool } from "@/components/tools/purchase-stock/PurchaseStockTool";
+import { ToolFallback } from "@/components/tools/ToolFallback";
+import { makeMarkdownText } from "@assistant-ui/react-markdown";
+
+const MarkdownText = makeMarkdownText({});
+
+const MyThreadWelcome: React.FC = () => {
+  return (
+    <ThreadWelcome.Root>
+      <ThreadWelcome.Center>
+        <ThreadWelcome.Avatar />
+        <ThreadWelcome.Message />
+      </ThreadWelcome.Center>
+      <div className="aui-thread-welcome-suggestion-wrapper"><ThreadWelcome.Suggestions /></div>
+    </ThreadWelcome.Root>
+  );
+};
+
+const MyThread: React.FC<ThreadConfig> = (config) => {
+  return (
+    <Thread.Root config={config}>
+      <Thread.Viewport>
+        <MyThreadWelcome />
+        <Thread.Messages />
+        <Thread.ViewportFooter>
+          <Thread.ScrollToBottom />
+          <Composer />
+        </Thread.ViewportFooter>
+      </Thread.Viewport>
+    </Thread.Root>
+  );
+};
+
+export default function Home() {
+  return (
+    <div className="flex h-full flex-col">
+      <MyThread
+        welcome={{
+          suggestions: [
+            {
+              "prompt": "The intelligent communication engine of the Solana ecosystem"
+            },
+            {
+              "prompt": "什么是 Solana？"
+            },
+            {
+              "prompt": "如何创建 Solana 钱包？"
+            },
+            {
+              "prompt": "Solana 如何实现高交易速度？"
+            },
+            {
+              "prompt": "如何参与 SOL 质押？"
+            },
+            {
+              "prompt": "如果我的交易确认时间过长，该怎么办？"
+            },
+            {
+              "prompt": "如何检查我的 Solana 网络交易状态？"
+            }
+          ],
+        }}
+        assistantMessage={{ components: { Text: MarkdownText } }}
+        tools={[PriceSnapshotTool, PurchaseStockTool]}
+	assistantAvatar={{
+            src: "./AvatarImage.svg",
+        //    fallback: "Steam"
+          }}
+      />
+    </div>
+  );
+}

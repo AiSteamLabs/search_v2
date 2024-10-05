@@ -1,0 +1,39 @@
+{
+  "name": "with-langgraph",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0 -p 8080",
+    "build": "next build",
+    "start": "next start -H 0.0.0.0 -p 8080",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@assistant-ui/react": "^0.5.66",
+    "@assistant-ui/react-langgraph": "^0.0.5",
+    "@assistant-ui/react-markdown": "^0.2.17",
+    "@langchain/langgraph-sdk": "^0.0.8",
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "js-cookie": "^3.0.5",
+    "lucide-react": "^0.439.0",
+    "next": "14.2.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "svgo": "^3.3.2",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.9",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.2"
+  }
+}
